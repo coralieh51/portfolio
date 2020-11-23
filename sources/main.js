@@ -72,6 +72,8 @@ function loadElementContent(elementId) {
         case 'realisations' :
             classToAdd = 'realisationsContent';
             break;
+        default :
+            classToAdd = 'disappear';
     }
 
     myContentElement = document.querySelector("." + classToAdd);
