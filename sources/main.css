@@ -36,7 +36,6 @@ textes pour compatibilité navigateurs */
     transform: rotate(180deg);
 }
 
-
 * {
     font-family: 'Montserrat', sans-serif;
     margin: 0;
@@ -54,7 +53,7 @@ textes pour compatibilité navigateurs */
     background-color: #9DECB7;
 }
 
-.rectangle {
+.shape {
     z-index: 100;
     position: fixed;
     padding: 25px;
@@ -85,26 +84,34 @@ nav {
     left: 30px;
 }
 
-.fa-circle, .fa-square, .fa-star {
+.fa-circle, .fa-star {
     margin-right: 20px;
     color: #9DECB7;
     border-radius: 50%;
     font-size: 3em;
 }
-.fa-paint-roller:nth-of-type(4) {
+.fa-square {
+    margin-right: 20px;
+    color: #ec9d9d;
+    border-radius: 50%;
+    font-size: 3em;
+}
+
+
+.fa-paint-roller:nth-of-type(3) {
     margin-right: 20px;
     color: #e988da;
     border-radius: 50%;
     font-size: 3em;
 }
-.fa-paint-roller:nth-of-type(5) {
+.fa-paint-roller:nth-of-type(4) {
     margin-right: 20px;
     color: #e3a63a;
     border-radius: 50%;
     font-size: 3em;
 }
 
-.fa-paint-roller:nth-of-type(6) {
+.fa-paint-roller:nth-of-type(5) {
     margin-right: 20px;
     color: #4bb742;
     border-radius: 50%;
@@ -119,6 +126,25 @@ nav {
     margin-right: 20px;
     color: #000000;
     font-size: 3em;
+}
+
+.rectangle {
+    z-index: 100;
+    position: fixed;
+    padding: 25px;
+    cursor: pointer;
+    width: 10vw;
+    height: 50vh;
+    right: 0;
+    opacity: 1;
+    overflow: hidden;
+}
+
+.round {
+    position: fixed;
+    width: 600px !important;
+    height: 600px;
+    background-color: pink;
 }
 
 /*****************************

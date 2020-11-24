@@ -1,38 +1,39 @@
-// Agir sur un élément selon son id ou sa classe
+// Act on element depending on its class or ID
 
-// Si les éléments ont la classe rectangle ...
-let myTargetElements = document.getElementsByClassName('rectangle');
+// If elements contain SHAPE class
+let myTargetElements = document.getElementsByClassName('shape');
 for (let oneTargetElement of myTargetElements) {
 
-    // On prend un élément parmi la collection et on lui ajoute un écouteur au CLIC
+    // We add an event for each element
     oneTargetElement.addEventListener('click', function myfunction(e) {
-        // On enregistre l'id de l'élément qui subit l'événement
+        // We store the element id targetted
         let elementId = e.target.getAttribute('id');
-        // Si l'élément n'a pas d'id (c'est donc son parent qui a la classe rectangle)
+        // If the element doesn't contains id, so its parent contains the SHAPE class
         if (!elementId) {
-            // On récupère son parent à la place
+            // We store the parent instead
             elementId = e.target.parentElement.getAttribute('id');
         }
-        // A ce stade elementId === l'id de l'élément qui a la classe rectangle
+        // At this point elementId CONTAINS the SHAPE class
 
-        // On choisit la classe à ajouter au titre de l'élément en fonction de l'id
-        // ce qui fera changer sa translation
+        // We choose the class to add depending on element ID
+        // Which will set the type of transition
         let classToAdd = translationToAdd(elementId);
-        // On récupère le titre de l'élément ciblé
-        // et on lui ajoute sa classe selon son id
+        // We store the target element
+        // We add the class depending on its id
         elementId = this.firstElementChild;
         elementId.classList.add(classToAdd);
-        // on réalise la translation de l'élément parent
 
+        // We set the parent element transition
         elementId = elementId.parentElement.getAttribute('id');
         newRotation(oneTargetElement);
 
+        // We load the content of the different elements
         loadElementContent(elementId);
         oneTargetElement.removeEventListener('click', myfunction);
     });
 }
 
-// Applique la translation selon l'id de l'élément
+// Translation depending on element ID
 function translationToAdd(elementId) {
     let classToAdd = '';
     switch (elementId) {
@@ -55,8 +56,7 @@ function translationToAdd(elementId) {
 }
 
 
-// Sélectionne l'élément enfant à afficher
-// en fonction de l'id de l'élément
+// Load the element child depending on parent element container id
 function loadElementContent(elementId) {
     let classToAdd = '';
     switch (elementId) {
@@ -78,7 +78,6 @@ function loadElementContent(elementId) {
 
     myContentElement = document.querySelector("." + classToAdd);
     myContentElement.style.opacity = '1';
-    console.log(myContentElement);
 
     if (myContentElement.classList.contains('profilContent')) {
 
@@ -95,12 +94,12 @@ function loadElementContent(elementId) {
         myContentElement.parentElement.style.top = '0';
         myContentElement.parentElement.style.height = '66vh';
     } else if (myContentElement.classList.contains('coordonneesContent')) {
-        myContentElement.parentElement.style.top= '66vh';
+        myContentElement.parentElement.style.top = '66vh';
         myContentElement.parentElement.style.height = '34vh';
     }
 }
 
-
+// Element rotation random X / Y
 function newRotation(elementId) {
     let classToAdd = '';
     if (Math.random() > 0.5) {
@@ -110,3 +109,48 @@ function newRotation(elementId) {
     }
     elementId.classList.add(classToAdd);
 }
+
+// Click on shaped elements
+
+// Select
+let changeShape = document.querySelector('nav i:nth-of-type(1)');
+changeShape.addEventListener('click', function (e) {
+    changeShape.classList.contains('fa') ? changeShape.classList.toggle('fa-circle') : changeShape.classList.toggle('fa-square');
+    let allShapedElements = document.getElementsByClassName('shape');
+
+    for (let oneShapedElement of allShapedElements) {
+        oneShapedElement.classList.add('rectangle');
+        oneShapedElement.classList.toggle('round');
+        e.preventDefault();
+        e.stopPropagation();
+    }
+});
+
+// Setting elements positions depending on ID and ACTIVE SHAPE
+let changeCircle = document.querySelector('nav i:nth-of-type(1)');
+if (changeCircle.classList.contains('fa-circle')) {
+    changeCircle.addEventListener('click', function (e) {
+            let allShapedElements = document.getElementsByClassName('rectangle');
+            for (let oneShapedElement of allShapedElements) {
+                console.log(oneShapedElement);
+                let idShapedElement = oneShapedElement.getAttribute('id');
+                console.log(idShapedElement);
+
+                switch (idShapedElement) {
+                    case 'competences' :
+                        if (oneShapedElement.classList.contains('round')) {
+                            oneShapedElement.style.backgroundColor = 'black';
+                        } else {
+                            oneShapedElement.style.backgroundColor = 'blue';
+                        }
+                        break;
+                }
+            }
+        }
+    );
+}
+
+
+
+
+
