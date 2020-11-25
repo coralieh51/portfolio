@@ -79,23 +79,25 @@ function loadElementContent(elementId) {
     myContentElement = document.querySelector("." + classToAdd);
     myContentElement.style.opacity = '1';
 
-    if (myContentElement.classList.contains('profilContent')) {
+    if (myContentElement.classList.contains('competencesContent')) {
+
+        myContentElement.parentElement.style.height = '66vh';
+
+    } else if (myContentElement.classList.contains('profilContent')) {
 
         myContentElement.parentElement.style.top = '0';
         myContentElement.parentElement.style.transition = '1s';
         myContentElement.parentElement.style.height = '100vh';
 
     } else if (myContentElement.classList.contains('realisationsContent')) {
-        myContentElement.parentElement.style.height = '80vh';
-        myContentElement.parentElement.style.transition = '1s';
-        myContentElement.parentElement.style.top = '20vh';
 
-    } else if (myContentElement.classList.contains('competencesContent')) {
-        myContentElement.parentElement.style.top = '0';
-        myContentElement.parentElement.style.height = '66vh';
+        myContentElement.parentElement.style.height = '70vh';
+        myContentElement.parentElement.style.transition = '1s';
+        myContentElement.parentElement.style.top = '30vh';
+
     } else if (myContentElement.classList.contains('coordonneesContent')) {
-        myContentElement.parentElement.style.top = '66vh';
-        myContentElement.parentElement.style.height = '34vh';
+
+        myContentElement.parentElement.style.height = '32vh';
     }
 }
 
@@ -113,42 +115,82 @@ function newRotation(elementId) {
 // Click on shaped elements
 
 // Select
+let fakeShape = document.querySelector('.fa-star');
+    fakeShape.addEventListener('click', function() {
+        document.querySelector('nav p').style.left = "0";
+    });
+
+
 let changeShape = document.querySelector('nav i:nth-of-type(1)');
+let allShapedElements = document.getElementsByClassName('shape');
+
 changeShape.addEventListener('click', function (e) {
-    changeShape.classList.contains('fa') ? changeShape.classList.toggle('fa-circle') : changeShape.classList.toggle('fa-square');
-    let allShapedElements = document.getElementsByClassName('shape');
+
+    changeShape.classList.toggle('fa-circle');
+    changeShape.classList.toggle('fa-square');
+    console.log(changeShape);
 
     for (let oneShapedElement of allShapedElements) {
-        oneShapedElement.classList.add('rectangle');
+
+        oneShapedElement.classList.toggle('rectangle');
         oneShapedElement.classList.toggle('round');
-        e.preventDefault();
-        e.stopPropagation();
+
+        // Setting elements positions depending on ID and ACTIVE SHAPE
+        let idShapedElement = oneShapedElement.getAttribute('id');
+
+        switch (idShapedElement) {
+
+            case 'competences' :
+                oneShapedElement.style.transition = '1s';
+
+                if (oneShapedElement.classList.contains('round')) {
+                    oneShapedElement.firstElementChild.style.padding='30px';
+                    oneShapedElement.style.top = '100px';
+                    oneShapedElement.style.left = '0';
+                    oneShapedElement.style.width= '33vw';
+                } else if (oneShapedElement.classList.contains('rectangle')) {
+                    oneShapedElement.style.top = '0vh';
+                    oneShapedElement.style.left = '80vw';
+                    oneShapedElement.style.width= '300px';
+
+                }
+                break;
+
+            case 'realisations' :
+                oneShapedElement.style.transition = '1s';
+
+                if (oneShapedElement.classList.contains('round')) {
+                    oneShapedElement.firstElementChild.style.padding='30px';
+
+                    oneShapedElement.style.top = '30vh';
+                    oneShapedElement.style.left = '78vw';
+                } else if (oneShapedElement.classList.contains('rectangle')) {
+                    oneShapedElement.style.top = '30vh';
+                    oneShapedElement.style.left = '0vw';
+                }
+                break;
+
+            case 'coordonnees' :
+                oneShapedElement.style.transition = '1s';
+
+                if (oneShapedElement.classList.contains('round')) {
+                    oneShapedElement.firstElementChild.style.padding='30px';
+
+                    oneShapedElement.style.top = '0vh';
+                    oneShapedElement.style.left = '60vw';
+
+                } else if (oneShapedElement.classList.contains('rectangle')) {
+                    oneShapedElement.style.top = 'calc(100vh - 300px)';
+                    oneShapedElement.style.left = '80vw';
+
+                }
+                break;
+        }
     }
 });
 
-// Setting elements positions depending on ID and ACTIVE SHAPE
-let changeCircle = document.querySelector('nav i:nth-of-type(1)');
-if (changeCircle.classList.contains('fa-circle')) {
-    changeCircle.addEventListener('click', function (e) {
-            let allShapedElements = document.getElementsByClassName('rectangle');
-            for (let oneShapedElement of allShapedElements) {
-                console.log(oneShapedElement);
-                let idShapedElement = oneShapedElement.getAttribute('id');
-                console.log(idShapedElement);
 
-                switch (idShapedElement) {
-                    case 'competences' :
-                        if (oneShapedElement.classList.contains('round')) {
-                            oneShapedElement.style.backgroundColor = 'black';
-                        } else {
-                            oneShapedElement.style.backgroundColor = 'blue';
-                        }
-                        break;
-                }
-            }
-        }
-    );
-}
+
 
 
 
