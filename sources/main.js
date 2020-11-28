@@ -115,14 +115,19 @@ function newRotation(elementId) {
 // Click on shaped elements
 
 // Select
-let fakeShape = document.querySelector('.fa-star');
-    fakeShape.addEventListener('click', function() {
-        document.querySelector('nav p').style.left = "0";
-    });
 
+
+document.querySelector('.fa-star').addEventListener('click', function () {
+        let message = document.querySelector('nav p');
+        message.style.left = '0';
+    setTimeout(function () {
+        message.style.left= '-500px';
+    }, 3000);
+});
 
 let changeShape = document.querySelector('nav i:nth-of-type(1)');
 let allShapedElements = document.getElementsByClassName('shape');
+
 
 changeShape.addEventListener('click', function (e) {
 
@@ -144,14 +149,14 @@ changeShape.addEventListener('click', function (e) {
                 oneShapedElement.style.transition = '1s';
 
                 if (oneShapedElement.classList.contains('round')) {
-                    oneShapedElement.firstElementChild.style.padding='30px';
+                    oneShapedElement.firstElementChild.style.padding = '30px';
                     oneShapedElement.style.top = '100px';
                     oneShapedElement.style.left = '0';
-                    oneShapedElement.style.width= '33vw';
+                    oneShapedElement.style.width = '33vw';
                 } else if (oneShapedElement.classList.contains('rectangle')) {
                     oneShapedElement.style.top = '0vh';
                     oneShapedElement.style.left = '80vw';
-                    oneShapedElement.style.width= '300px';
+                    oneShapedElement.style.width = '300px';
 
                 }
                 break;
@@ -160,7 +165,7 @@ changeShape.addEventListener('click', function (e) {
                 oneShapedElement.style.transition = '1s';
 
                 if (oneShapedElement.classList.contains('round')) {
-                    oneShapedElement.firstElementChild.style.padding='30px';
+                    oneShapedElement.firstElementChild.style.padding = '30px';
 
                     oneShapedElement.style.top = '30vh';
                     oneShapedElement.style.left = '78vw';
@@ -174,7 +179,7 @@ changeShape.addEventListener('click', function (e) {
                 oneShapedElement.style.transition = '1s';
 
                 if (oneShapedElement.classList.contains('round')) {
-                    oneShapedElement.firstElementChild.style.padding='30px';
+                    oneShapedElement.firstElementChild.style.padding = '30px';
 
                     oneShapedElement.style.top = '0vh';
                     oneShapedElement.style.left = '60vw';
@@ -182,17 +187,8 @@ changeShape.addEventListener('click', function (e) {
                 } else if (oneShapedElement.classList.contains('rectangle')) {
                     oneShapedElement.style.top = 'calc(100vh - 300px)';
                     oneShapedElement.style.left = '80vw';
-
                 }
                 break;
         }
     }
 });
-
-
-
-
-
-
-
-
