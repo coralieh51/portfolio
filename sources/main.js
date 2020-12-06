@@ -4,7 +4,6 @@
 let myTargetElements = document.getElementsByClassName('shape');
 for (let oneTargetElement of myTargetElements) {
 
-    // We add an event for each element
     oneTargetElement.addEventListener('click', function myfunction(e) {
         // We store the element id targetted
         let elementId = e.target.getAttribute('id');
@@ -118,11 +117,11 @@ function newRotation(elementId) {
 
 
 document.querySelector('.fa-star').addEventListener('click', function () {
-        let message = document.querySelector('nav p');
-        message.style.left = '0';
-    setTimeout(function () {
-        message.style.left= '-500px';
-    }, 3000);
+    let message = document.querySelector('nav p');
+    message.style.left = '0';
+    setTimeout(() => {
+        message.style.left = '-500px';
+    }, 1500);
 });
 
 let changeShape = document.querySelector('nav i:nth-of-type(1)');
@@ -192,3 +191,24 @@ changeShape.addEventListener('click', function (e) {
         }
     }
 });
+
+
+let paintRollers = document.getElementsByClassName('fa-paint-roller');
+const getColor =
+    () => {
+        let bg1 = document.getElementById('cloudsBg');
+
+        for (let oneRoller of paintRollers) {
+            oneRoller.addEventListener('click', () => {
+                bg1.style.backgroundColor = oneRoller.classList[2]
+                if (oneRoller.style.color ==='#267B88') {
+                    oneRoller.style.color = 'red';
+                }
+                oneRoller.style.color = '#267B88'
+                console.log(oneRoller.classList[2])
+            })
+
+        }
+    }
+
+getColor();

@@ -45,11 +45,23 @@ textes pour compatibilité navigateurs */
     color: #4fa484;
 }
 
-.blue {
+.bluebg {
     background-color: #267B88;
 }
 
-.green {
+.orangebg {
+    background-color: #e3a63a;
+}
+
+.pinkbg {
+    background-color: #e988da;
+}
+
+.greenbg {
+    background-color: #4bb742;
+}
+
+.lightgreen {
     background-color: #9DECB7;
 }
 
@@ -78,6 +90,7 @@ textes pour compatibilité navigateurs */
 
 nav {
     display: flex;
+    flex-direction: column;
     z-index: 200;
     position: fixed;
     height: 5vh;
@@ -90,9 +103,9 @@ nav p {
     left: -500px;
     position: absolute;
     padding: 10px;
-    background-color: rgba(255,255,255,0.3);
+    background-color: rgba(255, 255, 255, 0.3);
     color: red;
-    top: 60px;
+    top: 120px;
     transition: 0.5s;
 }
 
@@ -100,33 +113,36 @@ nav p {
     margin-right: 20px;
     color: #9DECB7;
     border-radius: 50%;
-    font-size: 3em;
+    font-size: 2em;
 }
+
 .fa-square {
     margin-right: 20px;
     color: #ec9d9d;
     border-radius: 50%;
-    font-size: 3em;
+    font-size: 2em;
 }
 
-.fa-paint-roller:nth-of-type(3) {
+.fa-paint-roller:nth-of-type(1), .fa-paint-brush:nth-of-type(4) {
     margin-right: 20px;
     color: #e988da;
     border-radius: 50%;
-    font-size: 3em;
+    font-size: 2em;
+    padding-top: 20px;
 }
-.fa-paint-roller:nth-of-type(4) {
+
+.fa-paint-roller:nth-of-type(2), .fa-paint-brush:nth-of-type(5) {
     margin-right: 20px;
     color: #e3a63a;
     border-radius: 50%;
-    font-size: 3em;
+    font-size: 2em;
 }
 
-.fa-paint-roller:nth-of-type(5) {
+.fa-paint-roller:nth-of-type(3), .fa-paint-brush:nth-of-type(6) {
     margin-right: 20px;
     color: #4bb742;
     border-radius: 50%;
-    font-size: 3em;
+    font-size: 2em;
 }
 
 .fa-toggle-on {
